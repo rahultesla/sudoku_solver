@@ -1,0 +1,28 @@
+{
+  "name": "sudoku_solver",
+  "version": "1.0.0",
+  "description": "This is a sudoku solving software.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rahultesla/sudoku_solver.git"
+  },
+  "keywords": [
+    "sudoku",
+    "solver",
+    "generator"
+  ],
+  "author": "Rahul Tesla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rahultesla/sudoku_solver/issues"
+  },
+  "homepage": "https://github.com/rahultesla/sudoku_solver#readme",
+  "devDependencies": {
+    "electron": "^5.0.4"
+  }
+}
