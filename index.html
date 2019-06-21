@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Sudoku Solver</title>
+  </head>
+  <body bgcolor="ade4ee">
+
+
+    
+    
+    <style>
+        body {
+    overflow-x: hidden;
+    overflow: hidden;
+  }
+            .grid-container {
+              display: grid;
+              grid-template-columns: 200px 200px 200px ;
+              background-color: rgb(173, 228, 238);
+              padding: 50px;
+              
+            }
+            .grid-container3 {
+              display: grid;
+              grid-template-columns: 800px ;
+              background-color: rgb(173, 228, 238);
+              padding: 50px;
+              
+            }
+            .grid-container4 {
+              display: grid;
+              grid-template-columns: 200px 200px;
+              background-color: rgb(173, 228, 238);
+              padding: 50px;
+              
+            }
+            .grid-container2 {
+              display: grid;
+              grid-template-columns: 800px 800px ;
+              background-color: rgb(173, 228, 238);
+              padding: 50px;
+              border: 5px black;
+              
+            }
+            .grid-container1 {
+              display: grid;
+              grid-template-columns: 60px 60px 60px ;
+              background-color: rgb(173, 228, 238);
+              padding: 5px;
+              
+              
+            }
+            .grid-item {
+              background-color: rgba(173, 228, 238, 0.8); 
+              border: 1px;
+              padding-left: 5px;
+              padding-top: 5px;
+              font-size: 10px;
+              text-align: center;
+            }
+            
+            </style>
+            
+    <div class="grid-container2">
+    <div class="grid-container">
+        <div class="grid-container1">
+    
+                <div class="grid-item"><input type="text" id="00" maxlength="1" style="font-size:50px;width:50px;"  ></input></div>
+                <div class="grid-item"><input type="text" id="01" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                <div class="grid-item"><input type="text" id="02" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                <div class="grid-item"><input type="text" id="10" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                <div class="grid-item"><input type="text" id="11" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                <div class="grid-item"><input type="text" id="12" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                <div class="grid-item"><input type="text" id="20" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                <div class="grid-item"><input type="text" id="21" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                <div class="grid-item"><input type="text" id="22" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+
+        </div>
+        <div class="grid-container1">
+                <div class="grid-item"><input type="text" id="03" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                <div class="grid-item"><input type="text" id="04" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                <div class="grid-item"><input type="text" id="05" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                <div class="grid-item"><input type="text" id="13" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                <div class="grid-item"><input type="text" id="14" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                <div class="grid-item"><input type="text" id="15" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                <div class="grid-item"><input type="text" id="23" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                <div class="grid-item"><input type="text" id="24" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                <div class="grid-item"><input type="text" id="25" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+
+                
+        </div>
+        <div class="grid-container1">
+                <div class="grid-item"><input type="text" id="06" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                <div class="grid-item"><input type="text" id="07" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                <div class="grid-item"><input type="text" id="08" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                
+                <div class="grid-item"><input type="text" id="16" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                <div class="grid-item"><input type="text" id="17" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                <div class="grid-item"><input type="text" id="18" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                
+                
+                <div class="grid-item"><input type="text" id="26" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                <div class="grid-item"><input type="text" id="27" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                <div class="grid-item"><input type="text" id="28" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+
+
+        </div>
+        <div class="grid-container1">
+                <div class="grid-item"><input type="text" id="30" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                <div class="grid-item"><input type="text" id="31" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                <div class="grid-item"><input type="text" id="32" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                <div class="grid-item"><input type="text" id="40" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            <div class="grid-item"><input type="text" id="41" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            <div class="grid-item"><input type="text" id="42" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            <div class="grid-item"><input type="text" id="50" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            <div class="grid-item"><input type="text" id="51" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            <div class="grid-item"><input type="text" id="52" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+
+                
+            
+            </div>
+            <div class="grid-container1">
+                    <div class="grid-item"><input type="text" id="33" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            <div class="grid-item"><input type="text" id="34" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            <div class="grid-item"><input type="text" id="35" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            <div class="grid-item"><input type="text" id="43" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            <div class="grid-item"><input type="text" id="44" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            <div class="grid-item"><input type="text" id="45" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            <div class="grid-item"><input type="text" id="53" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            <div class="grid-item"><input type="text" id="54" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            <div class="grid-item"><input type="text" id="55" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            
+                </div>
+                <div class="grid-container1">
+                        <div class="grid-item"><input type="text" id="36" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                        <div class="grid-item"><input type="text" id="37" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                        <div class="grid-item"><input type="text" id="38" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                        <div class="grid-item"><input type="text" id="46" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            <div class="grid-item"><input type="text" id="47" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            <div class="grid-item"><input type="text" id="48" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            <div class="grid-item"><input type="text" id="56" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            <div class="grid-item"><input type="text" id="57" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            <div class="grid-item"><input type="text" id="58" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            
+                    </div><div class="grid-container1">
+                            <div class="grid-item"><input type="text" id="60" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                            <div class="grid-item"><input type="text" id="61" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                            <div class="grid-item"><input type="text" id="62" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                            <div class="grid-item"><input type="text" id="70" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            <div class="grid-item"><input type="text" id="71" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            <div class="grid-item"><input type="text" id="72" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            <div class="grid-item"><input type="text" id="80" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            <div class="grid-item"><input type="text" id="81" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            <div class="grid-item"><input type="text" id="82" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+
+            
+                        </div><div class="grid-container1">
+                                <div class="grid-item"><input type="text" id="63" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                                <div class="grid-item"><input type="text" id="64" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                                <div class="grid-item"><input type="text" id="65" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                                <div class="grid-item"><input type="text" id="73" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                                <div class="grid-item"><input type="text" id="74" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                                <div class="grid-item"><input type="text" id="75" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                                <div class="grid-item"><input type="text" id="83" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                                <div class="grid-item"><input type="text" id="84" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                                <div class="grid-item"><input type="text" id="85" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+
+            
+                            </div><div class="grid-container1">
+                                    <div class="grid-item"><input type="text" id="66" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                                    <div class="grid-item"><input type="text" id="67" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                                    <div class="grid-item"><input type="text" id="68" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                                    
+                                    
+                                    <div class="grid-item"><input type="text" id="76" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                                    <div class="grid-item"><input type="text" id="77" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                                    <div class="grid-item"><input type="text" id="78" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                                    
+                                    
+                                    <div class="grid-item"><input type="text" id="86" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                                    <div class="grid-item"><input type="text" id="87" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+                                    <div class="grid-item"><input type="text" id="88" maxlength="1" style="font-size:50px;width:50px;"  pattern="[1-9]" required/></div>
+            
+                                </div>              
+                </div>
+
+                <div class="grid-container3">
+                    <div class="grid-container4"><label style="font-size: 50px;font-family: Verdana;color: white">Sudoku
+                        </label><label style="font-size: 50px;font-family: Verdana;color: white">Solver
+                            </label></div>
+                    <div class="grid-container4">
+                        <div>
+                                <a href="#" class="solve" onclick="solving()">Generate</a>
+                        </div>
+                        <div>
+                                <a href="#" class="clear" onclick="cclear()">clear</a>
+                        </div>
+                            
+                            
+                    </div>
+                     <div><label id="error" style="font-size: 30px;color:white;font-family:Verdana;padding-left: 50px">Enter Sudoku puzzle</label></div>
+                </div>
+
+
+                     
+
+                </div>
+            </div>
+
+            <script>
+
+                
+                function collectvalue(box){
+                    var i,j;
+                    for(i=0;i<9;i++){
+                        for(j=0;j<9;j++){
+                            if(document.getElementById(i.toString()+j.toString()).value !== null){
+                                box[i][j] = document.getElementById(i.toString()+j.toString()).value;
+                            }
+                            else if(document.getElementById(i.toString()+j.toString()).value == null){
+                                box[i][j] = "0";
+                            }
+                        }
+                    }
+                
+
+                }
+                
+
+                function findcell(box,i,j){
+                    var x,y;
+                    for(x=i;x<9;x++){
+                        for(y=j;y<9;y++){
+                            if(box[x][y] == ""){
+                                return [x,y]
+                            }
+                        }
+                    }
+                    for(x=0;x<9;x++){
+                        for(y=0;y<9;y++){
+                            if(box[x][y] == ""){
+                                return [x,y]
+                            }
+                        }
+                    }
+                    return [9,9]
+                }
+                function isvalid(box,i,j,q){
+                    if(box[i][j] !== ""){
+                        return false
+                    }
+                    var k,l,r,s;
+                    for(l=0;l<9;l++){
+                        if(box[i][l] == q){
+                            return false
+                        }
+                    }
+                    for(k=0;k<9;k++){
+                        if(box[k][j] == q){
+                            return false
+                        }
+                    }
+                    r = parseInt(i/3)*3;
+                    s = parseInt(j/3)*3;
+                    for(k=r;k<r+3;k++){
+                        for(l=s;l<s+3;l++){
+                            if(box[k][l] == q){
+                                return false
+                            }
+                        }
+                    }
+                    return true
+                }
+                function solve(box,i,j){
+                    m = findcell(box,i,j);
+                    i = m[0];
+                    j = m[1];
+                    var e;
+                    if(i == 9){
+                        return true
+                    }
+                    for(e=1;e<10;e++){
+                        e = e.toString();
+                        if(isvalid(box,i,j,e)){
+                            box[i][j] = e;
+                            if(solve(box,i,j)){
+                                return true
+                            }
+                            box[i][j] = "";
+
+                        }
+
+                    }
+                    return false
+                }
+                function putvalue(box){
+                    var i,j;
+                    for(i=0;i<9;i++){
+                        for(j=0;j<9;j++){
+                            document.getElementById(i.toString()+j.toString()).value = box[i][j];
+                        }
+                    }
+                }
+                function rand(min, max) {
+                    return Math.random() * (max - min) + min;
+                }
+                function solving(){
+                    var box = [["0","0","0","0","0","0","0","0","0"],["0","0","0","0","0","0","0","0","0"],["0","0","0","0","0","0","0","0","0"],["0","0","0","0","0","0","0","0","0"],["0","0","0","0","0","0","0","0","0"],["0","0","0","0","0","0","0","0","0"],["0","0","0","0","0","0","0","0","0"],["0","0","0","0","0","0","0","0","0"],["0","0","0","0","0","0","0","0","0"]];
+                    var box = [["","","","","","","","",""],["","","","","","","","",""],["","","","","","","","",""],["","","","","","","","",""],["","","","","","","","",""],["","","","","","","","",""],["","","","","","","","",""],["","","","","","","","",""],["","","","","","","","",""]];
+                    collectvalue(box);
+                    var w = Math.round(rand(0,8));
+                    var e = Math.round(rand(0,8));
+                    if(solve(box,w,e)){
+                        putvalue(box);
+                        document.getElementById("error").innerHTML = "Sudoku Generated !";
+                    }
+                    else{
+                        document.getElementById("error").innerHTML = "please check whether your puzzle is correct";
+                    }
+                }
+                function cclear(){
+                    var i,j;
+                    for(i=0;i<9;i++){
+                        for(j=0;j<9;j++){
+                            document.getElementById(i.toString()+j.toString()).value = null;
+                        }
+                    }
+                    document.getElementById("error").innerHTML = "Enter Sudoku puzzle";;
+                }
+                
+                
+            </script>
+            
+          <style>
+        .solve {
+            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #44c767), color-stop(1, #5cbf2a));
+            background:-moz-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
+            background:-webkit-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
+            background:-o-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
+            background:-ms-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
+            background:linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#44c767', endColorstr='#5cbf2a',GradientType=0);
+            background-color:#44c767;
+            -moz-border-radius:42px;
+            -webkit-border-radius:42px;
+            border-radius:42px;
+            display:inline-block;
+            cursor:pointer;
+            color:#ffffff;
+            font-family:Verdana;
+            font-size:28px;
+            padding:12px 28px;
+            text-decoration:none;
+        }
+        .solve:hover {
+            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5cbf2a), color-stop(1, #44c767));
+            background:-moz-linear-gradient(top, #5cbf2a 5%, #44c767 100%);
+            background:-webkit-linear-gradient(top, #5cbf2a 5%, #44c767 100%);
+            background:-o-linear-gradient(top, #5cbf2a 5%, #44c767 100%);
+            background:-ms-linear-gradient(top, #5cbf2a 5%, #44c767 100%);
+            background:linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cbf2a', endColorstr='#44c767',GradientType=0);
+            background-color:#5cbf2a;
+        }
+        .solve:active {
+            position:relative;
+            top:1px;
+        }
+        .clear {
+            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #44c767), color-stop(1, #5cbf2a));
+            background:-moz-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
+            background:-webkit-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
+            background:-o-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
+            background:-ms-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
+            background:linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#44c767', endColorstr='#5cbf2a',GradientType=0);
+            background-color:#44c767;
+            -moz-border-radius:42px;
+            -webkit-border-radius:42px;
+            border-radius:42px;
+            display:inline-block;
+            cursor:pointer;
+            color:#ffffff;
+            font-family:Verdana;
+            font-size:28px;
+            padding:12px 28px;
+            text-decoration:none;
+        }
+        .clear:hover {
+            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5cbf2a), color-stop(1, #44c767));
+            background:-moz-linear-gradient(top, #5cbf2a 5%, #44c767 100%);
+            background:-webkit-linear-gradient(top, #5cbf2a 5%, #44c767 100%);
+            background:-o-linear-gradient(top, #5cbf2a 5%, #44c767 100%);
+            background:-ms-linear-gradient(top, #5cbf2a 5%, #44c767 100%);
+            background:linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cbf2a', endColorstr='#44c767',GradientType=0);
+            background-color:#5cbf2a;
+        }
+        .clear:active {
+            position:relative;
+            top:1px;
+        }
+        
+        
+          
+            </style>
+         
+    
+  </body>
+</html>
