@@ -11,6 +11,7 @@ function createWindow () {
   win = new BrowserWindow({
     width: 1600,
     height:1360,
+    icon:'sudokuicon.ico',
     webPreferences: {
       nodeIntegration: true
     }
